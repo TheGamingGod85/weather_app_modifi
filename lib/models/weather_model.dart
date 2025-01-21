@@ -1,35 +1,39 @@
-import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:weather_app/models/forecast.dart';
 
-class WeatherModel with ChangeNotifier{
-  final String cityName;
+class WeatherModel {
+  final String city;
   final double temperature;
-  final String description;
-  final String icon;
+  final String weatherCondition;
+  final double windSpeed;
+  final int humidity;
+  final int pressure;
+  final String weatherIcon;
+  final List<Forecast> forecast;
 
   WeatherModel({
-    required this.cityName,
+    required this.city,
     required this.temperature,
-    required this.description,
-    required this.icon,
+    required this.weatherCondition,
+    required this.windSpeed,
+    required this.humidity,
+    required this.pressure,
+    required this.weatherIcon,
+    required this.forecast,
   });
 
-  // void save() {
-  //   final box = Hive.box('weather');
-  //   box.put('city', cityName);
-  //   box.put('temperature', temperature);
-  //   box.put('description', description);
-  //   box.put('icon', icon);
-  // }
-
-
-
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
+    final List<Forecast> forecast =
+        (json['daily'] as List).map((item) => Forecast.fromJson(item)).toList();
+
     return WeatherModel(
-      cityName: json['name'],
+      city: json['name'],
       temperature: json['main']['temp'].toDouble(),
-      description: json['weather'][0]['description'],
-      icon: json['weather'][0]['icon'],
+      weatherCondition: json['weather'][0]['main'],
+      windSpeed: json['wind']['speed'].toDouble(),
+      humidity: json['main']['humidity'],
+      pressure: json['main']['pressure'],
+      weatherIcon: json['weather'][0]['icon'],
+      forecast: forecast,
     );
   }
 }
