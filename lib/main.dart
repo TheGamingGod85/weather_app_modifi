@@ -5,12 +5,17 @@ import 'package:provider/provider.dart';
 import 'package:weather_app/provider/weather_provider.dart';
 import 'package:weather_app/utils/colors/app_colors.dart';
 import 'package:weather_app/views/screens/auth/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await dotenv.load(fileName: '.env');
-  
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(
     MultiProvider(
       providers: [

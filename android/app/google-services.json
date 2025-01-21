@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "934302133797",
+    "firebase_url": "https://java-c9a00.firebaseio.com",
+    "project_id": "java-c9a00",
+    "storage_bucket": "java-c9a00.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934302133797:android:3055f7f739e8466bb359cc",
+        "android_client_info": {
+          "package_name": "com.example.weather_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934302133797-l7n75lvb6v9ol60555jfb0cfmmm2v78v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiAGzKojLrLDULm0ZA3rHD_0BwWVyDNwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934302133797-l7n75lvb6v9ol60555jfb0cfmmm2v78v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
