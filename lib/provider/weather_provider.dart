@@ -8,7 +8,7 @@ class WeatherProvider with ChangeNotifier {
   List<Forecast> _forecast = [];
   bool _isLoading = false;
 
-  WeatherModel get weatherModel => _weatherModel!;
+  WeatherModel?get weatherModel => _weatherModel;
   List<Forecast> get forecast => _forecast;
   bool get isLoading => _isLoading;
 
