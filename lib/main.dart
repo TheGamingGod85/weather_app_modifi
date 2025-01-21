@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/provider/weather_provider.dart';
@@ -8,6 +9,8 @@ import 'package:weather_app/views/screens/auth/login_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  await dotenv.load(fileName: '.env');
+  
   runApp(
     MultiProvider(
       providers: [
