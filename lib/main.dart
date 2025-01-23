@@ -11,7 +11,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  await dotenv.load(fileName: '.env');
+  await dotenv.load(fileName: '.env/.env');
 
   // Initialize Firebase
   await Firebase.initializeApp(

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:weather_app/constant/api_keys.dart';
 import 'package:weather_app/models/forecast.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -34,5 +35,17 @@ class ApiService {
     } else {
       throw Exception('Failed to load forecast data');
     }
+  }
+
+  // Fetch weather by latitude and longitude
+  Future<WeatherModel?> getWeatherByLocation(double lat, double lon) async {
+    final url =
+        'https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey&units=metric';
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      return WeatherModel.fromJson(jsonDecode(response.body));
+    }
+    return null;
   }
 }
