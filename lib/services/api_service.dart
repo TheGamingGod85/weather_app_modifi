@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:weather_app/constant/api_keys.dart';
 import 'package:weather_app/models/forecast.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiService {
-  static const String _baseUrl = 'https://api.openweathermap.org/data/2.5';
   final apiKey = dotenv.env['API_KEY'];
 
   Future<WeatherModel> fetchWeather(String city) async {
@@ -26,8 +24,11 @@ class ApiService {
   }
 
   Future<List<Forecast>> fetchForecast(String city) async {
-    final response = await http.get(
-        Uri.parse('$_baseUrl/forecast?q=$city&units=metric&appid=$apiKey'));
+    final baseURL =
+        'https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric';
+
+    final response = await http
+        .get(Uri.parse('$baseURL/forecast?q=$city&units=metric&appid=$apiKey'));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);

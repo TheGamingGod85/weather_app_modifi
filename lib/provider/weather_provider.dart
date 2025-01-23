@@ -24,7 +24,9 @@ class WeatherProvider with ChangeNotifier {
   // Method to fetch weather data
   Future<void> fetchWeatherData(String city) async {
     _isLoading = true;
-    notifyListeners();
+
+    // Notify listeners to update the UI
+    await Future.delayed(Duration(seconds: 2));
 
     // Fetch weather data and forecast data
     try {
@@ -40,16 +42,14 @@ class WeatherProvider with ChangeNotifier {
 
     // Notify listeners to update the UI
     notifyListeners();
+  }
 
-    // fetch weather using latitude and longitude
-    Future<void> fetchWeatherByLocation(
-        double latitude, double longitude) async {
-      _isLoading = true;
-      notifyListeners();
-      _weatherModel =
-          await _apiService.getWeatherByLocation(latitude, longitude);
-      _isLoading = false;
-      notifyListeners();
-    }
+  // fetch weather using latitude and longitude
+  Future<void> fetchWeatherByLocation(double latitude, double longitude) async {
+    _isLoading = true;
+    notifyListeners();
+    _weatherModel = await _apiService.getWeatherByLocation(latitude, longitude);
+    _isLoading = false;
+    notifyListeners();
   }
 }
