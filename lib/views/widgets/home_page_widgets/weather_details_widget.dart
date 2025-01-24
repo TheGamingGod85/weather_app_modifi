@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:weather_app/provider/weather_provider.dart';
 import 'package:weather_app/utils/colors/app_colors.dart';
 
 class WeatherDetailsWidget extends StatelessWidget {
@@ -6,9 +8,11 @@ class WeatherDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final weatherProvider = Provider.of<WeatherProvider>(context);
+
     return Container(
-      margin: const EdgeInsets.only(top: 20),
-      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
@@ -19,25 +23,28 @@ class WeatherDetailsWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // wind speed
-          Row(
-            children: [
-              // icon
-              Icon(
-                Icons.air,
-                color: AppColors.lightGreenColor,
-              ),
-
+          weatherProvider.weatherModel == null
+              ? CircularProgressIndicator()
+              :
               // wind speed
-              Text(
-                ' 5 km/h',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey[300],
+              Row(
+                  children: [
+                    // icon
+                    Icon(
+                      Icons.air,
+                      color: AppColors.lightGreenColor,
+                    ),
+
+                    // wind speed
+                    Text(
+                      ' ${weatherProvider.weatherModel?.windSpeed} km/h',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey[300],
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
 
           // humidity
           Row(
@@ -50,7 +57,7 @@ class WeatherDetailsWidget extends StatelessWidget {
 
               // humidity
               Text(
-                ' 50%',
+                ' ${weatherProvider.weatherModel?.humidity}%',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey[300],
@@ -59,18 +66,18 @@ class WeatherDetailsWidget extends StatelessWidget {
             ],
           ),
 
-          // Precipitation
+          // Pressure
           Row(
             children: [
               // icon
               Icon(
-                Icons.umbrella,
+                Icons.water_rounded,
                 color: AppColors.lightGreenColor,
               ),
 
-              // Precipitation
+              // Pressure
               Text(
-                '10 %',
+                ' ${weatherProvider.weatherModel?.pressure} bar',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey[300],

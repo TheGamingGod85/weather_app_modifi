@@ -17,13 +17,16 @@ class DateDayWidget extends StatelessWidget {
         Text(
           formattedDate,
           style: TextStyle(
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
         // year
         Text(
           ',  ${now.year}',
-          style: TextStyle(),
+          style: TextStyle(
+            fontSize: 20,
+          ),
         ),
       ],
     );

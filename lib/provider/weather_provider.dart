@@ -8,7 +8,7 @@ class WeatherProvider with ChangeNotifier {
   WeatherModel? _weatherModel;
 
   // List of Forecast instances
-  List<Forecast> _forecast = [];
+  final List<Forecast> _forecast = [];
 
   // Loading indicator
   bool _isLoading = false;
@@ -22,34 +22,19 @@ class WeatherProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
 
   // Method to fetch weather data
-  Future<void> fetchWeatherData(String city) async {
+  Future<void> fetchWeatherData(double lat, double lon) async {
     _isLoading = true;
+    notifyListeners();
 
     // Notify listeners to update the UI
     await Future.delayed(Duration(seconds: 2));
 
-    // Fetch weather data and forecast data
-    try {
-      _weatherModel = await _apiService.fetchWeather(city);
-      _forecast = await _apiService.fetchForecast(city);
-    } catch (e) {
-      _weatherModel = null;
-      _forecast = [];
-    }
+    _weatherModel = await _apiService.getWeather(lat, lon);
 
     // Set isLoading to false
     _isLoading = false;
 
     // Notify listeners to update the UI
-    notifyListeners();
-  }
-
-  // fetch weather using latitude and longitude
-  Future<void> fetchWeatherByLocation(double latitude, double longitude) async {
-    _isLoading = true;
-    notifyListeners();
-    _weatherModel = await _apiService.getWeatherByLocation(latitude, longitude);
-    _isLoading = false;
     notifyListeners();
   }
 }

@@ -1,9 +1,0 @@
-For managing Images, Icons, Fonts.
-*Don't Use assets folder in lib
-
-# Font => Inter Typeface    
-    - Bold
-    - Medium
-    - Semibold
-    - Regular
-

@@ -12,8 +12,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  await dotenv.load(fileName: '.env/.env');
-  print(dotenv.env['API_KEY']);
+  await dotenv.load(fileName: '.env');
 
   // Initialize Firebase
   await Firebase.initializeApp(
@@ -42,12 +41,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-          primaryColor: AppColors.darkGreenColor,
-          textTheme: TextTheme(
-              // bodyText1: TextStyle(color: Colors.white),
-              // bodyText2: TextStyle(color: Colors.white),
-              // button: TextStyle(color: Colors.white),
-              )),
+        primaryColor: AppColors.darkGreenColor,
+        textTheme: TextTheme(),
+      ),
       home: LoginPage(),
     );
   }
