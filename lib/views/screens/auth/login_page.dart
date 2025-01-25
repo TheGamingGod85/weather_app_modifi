@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:weather_app/provider/auth_provider.dart';
 import 'package:weather_app/utils/colors/app_colors.dart';
-import 'package:weather_app/views/screens/main/home_page.dart';
+import 'package:weather_app/views/screens/auth/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,6 +17,9 @@ class _LoginPageState extends State<LoginPage> {
   final _formkey = GlobalKey<FormState>();
   var _isObsecured;
 
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -25,11 +28,12 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Form(
               key: _formkey,
               child: Column(
@@ -57,14 +61,17 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
+
                   SizedBox(height: 90),
-        
+
                   // Input : Email
                   TextFormField(
+                    controller: _emailController,
+                    key: ValueKey('email'),
                     decoration: InputDecoration(
                       prefixIcon:
                           Icon(Icons.person, color: AppColors.darkGreenColor),
-                      hintText: "Login",
+                      hintText: "Email",
                       hintStyle: TextStyle(color: AppColors.darkGreenColor),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: AppColors.darkGreenColor),
@@ -77,9 +84,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height: 20),
-        
+
                   // Input : Password
                   TextFormField(
+                    controller: _passwordController,
+                    key: ValueKey('password'),
                     obscureText: _isObsecured,
                     decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -88,7 +97,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       suffixIcon: IconButton(
                         icon: Icon(
-                          _isObsecured ? Icons.visibility : Icons.visibility_off,
+                          _isObsecured
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                           color: AppColors.darkGreenColor,
                         ),
                         onPressed: () {
@@ -110,8 +121,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+
                   SizedBox(height: 10),
-        
+
                   // forgot password
                   Align(
                     alignment: Alignment.centerRight,
@@ -121,54 +133,46 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height: 50),
-        
+
                   // Button : Sign in
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // TODO: Implement Sign in
-        
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            // applied a SlideTransition effect
-                            pageBuilder:
-                                (context, animation, secondaryAnimation) =>
-                                    HomePage(),
-                            transitionDuration: Duration(milliseconds: 800),
-                            transitionsBuilder:
-                                (context, animation, secondaryAnimation, child) =>
-                                    SlideTransition(
-                              position: Tween<Offset>(
-                                begin: Offset(1, 0),
-                                end: Offset.zero,
-                              ).animate(animation),
-                              child: child,
+                  authProvider.isLoading
+                      ? CircularProgressIndicator()
+                      : SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              bool success = await authProvider.login(
+                                _emailController.text,
+                                _passwordController.text,
+                              );
+                              if (!success) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(authProvider.errorMessage),
+                                  ),
+                                );
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.darkGreenColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                vertical: 16,
+                              ),
+                            ),
+                            child: Text(
+                              "Sign in",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.darkGreenColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
                         ),
-                        padding: EdgeInsets.symmetric(
-                          vertical: 16,
-                        ),
-                      ),
-                      child: Text(
-                        "Sign in",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
                   SizedBox(height: 20),
-        
+
                   // Text : Dont have a Account? 'Sign up'
                   Center(
                     child: RichText(
@@ -184,10 +188,10 @@ class _LoginPageState extends State<LoginPage> {
                             text: "Sign up",
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HomePage(),
+                                    builder: (context) => SignupPage(),
                                   ),
                                 );
                               },
