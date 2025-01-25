@@ -1,5 +1,6 @@
 class WeatherModel {
   final String locationName;
+  final String country;
   final double temperature;
   final double windSpeed;
   final int humidity;
@@ -8,6 +9,7 @@ class WeatherModel {
 
   WeatherModel({
     required this.locationName,
+    required this.country,
     required this.temperature,
     required this.windSpeed,
     required this.humidity,
@@ -20,9 +22,10 @@ class WeatherModel {
       locationName: json['name'] ?? 'Unknown Location',
       temperature: json['main']['temp'].toDouble(),
       windSpeed: json['wind']['speed'].toDouble(),
+      country: json['sys']['country'],
       humidity: json['main']['humidity'],
       pressure: json['main']['pressure'],
-      weatherIcon: json['weather'][0]['icon'],
+      weatherIcon: json['weather'][0]['icon'] ?? '01d',
     );
   }
 }

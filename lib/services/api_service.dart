@@ -14,7 +14,6 @@ class ApiService {
     final baseURL =
         'https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey&units=metric';
     final response = await http.get(Uri.parse(baseURL));
-    print('API Response: ${response.body}');
 
     try {
       if (response.statusCode == 200) {
@@ -25,6 +24,30 @@ class ApiService {
       }
     } catch (e) {
       throw Exception('Failed to load weather data $e');
+    }
+  }
+
+  // get the forecast data
+  Future<List<Forecast>> getForecast(double lat, double lon) async {
+    // loading the API key from the .env file
+    await dotenv.load(fileName: '.env');
+    final apiKey = dotenv.env['API_KEY'];
+
+    final forecastUrl =
+        'https://api.openweathermap.org/data/2.5/forecast?lat=$lat&lon=$lon&appid=$apiKey&units=metric';
+
+    final response = await http.get(Uri.parse(forecastUrl));
+
+    // check if the response is successful
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+
+      List<dynamic> forecastList = data['list'];
+
+      // convert each forecast JSON into a forecast model
+      return forecastList.map((item) => Forecast.fromJson(item)).toList();
+    } else {
+      throw Exception('Failed to load forecast data');
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_app/models/forecast.dart';
 import 'package:weather_app/provider/navigation_provider.dart';
 import 'package:weather_app/provider/weather_provider.dart';
 import 'package:weather_app/utils/colors/app_colors.dart';
@@ -45,6 +46,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    List<Forecast> forecastData = [];
     final weatherProvider = Provider.of<WeatherProvider>(context);
     return Scaffold(
       appBar: AppBar(

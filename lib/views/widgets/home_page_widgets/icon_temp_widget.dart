@@ -12,6 +12,18 @@ class IconTempWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // temp
+        // icon
+        Image.network(
+          'https://openweathermap.org/img/wn/${weatherProvider.weatherModel?.weatherIcon}@2x.png',
+          width: 100,
+          height: 100,
+          errorBuilder: (context, error, stackTrace) {
+            return Icon(
+              Icons.error,
+              color: Colors.white,
+            );
+          },
+        ),
 
         // wait 2 sec for the weather data to load
         weatherProvider.weatherModel == null
@@ -26,16 +38,6 @@ class IconTempWidget extends StatelessWidget {
                   fontStyle: FontStyle.normal,
                 ),
               ),
-
-        // icon
-        // weatherProvider.weatherModel == null
-        //     ? CircularProgressIndicator(
-        //         color: Colors.yellow,
-        //       )
-        //     : Image.network(
-        //         weatherProvider.weatherModel?.weatherIcon ?? '0',
-        //         scale: 0.5,
-        //       ),
       ],
     );
   }
