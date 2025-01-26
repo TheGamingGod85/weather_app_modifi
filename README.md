@@ -36,7 +36,7 @@ Follow these steps to run the app locally:
 
 2. **Navigate to the project directory:**
     ```bash
-    cd weather-app
+    cd weather_app
     
 3. **Install dependencies:**
     ```bash
