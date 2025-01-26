@@ -6,6 +6,7 @@ import 'package:weather_app/provider/weather_provider.dart';
 import 'package:weather_app/utils/colors/app_colors.dart';
 import 'package:weather_app/views/screens/main/location_page.dart';
 import 'package:weather_app/views/screens/main/settings_page.dart';
+import 'package:weather_app/views/widgets/home_page_widgets/additional_weather.dart';
 import 'package:weather_app/views/widgets/home_page_widgets/date_day_widget.dart';
 import 'package:weather_app/views/widgets/home_page_widgets/forecast_widget.dart';
 import 'package:weather_app/views/widgets/home_page_widgets/icon_temp_widget.dart';
@@ -22,6 +23,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final LocationService _locationService = LocationService();
+  final GlobalKey<RefreshIndicatorState> _refreshKey =
+      GlobalKey<RefreshIndicatorState>();
 
   @override
   void initState() {
@@ -63,41 +66,46 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: weatherProvider.isLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Center(
-                  child: Consumer<NavigationProvider>(
-                    builder: (context, navigationProvider, child) {
-                      final currentIndex = navigationProvider.currentIndex;
-                      final screen = [
-                        // home page
-                        SingleChildScrollView(
-                          child: Wrap(
-                            spacing: 20,
-                            runSpacing: 35,
-                            children: [
-                              DateDayWidget(),
-                              Divider(color: Colors.green.shade400),
-                              IconTempWidget(),
-                              WeatherDetailsWidget(),
-                              ForecastWidget(),
-                              ViewNext7DaysWidget(),
-                            ],
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await _getUserLocationWeather();
+        },
+        child: SafeArea(
+          child: weatherProvider.isLoading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Center(
+                    child: Consumer<NavigationProvider>(
+                      builder: (context, navigationProvider, child) {
+                        final currentIndex = navigationProvider.currentIndex;
+                        final screen = [
+                          // home page
+                          SingleChildScrollView(
+                            child: Wrap(
+                              spacing: 20,
+                              runSpacing: 25,
+                              children: [
+                                DateDayWidget(),
+                                IconTempWidget(),
+                                AdditionalWeather(),
+                                WeatherDetailsWidget(),
+                                ForecastWidget(),
+                                ViewNext7DaysWidget(),
+                              ],
+                            ),
                           ),
-                        ),
-                        const LocationPage(),
-                        const SettingsPage(),
-                      ];
-                      return screen[currentIndex];
-                    },
+                          const LocationPage(),
+                          const SettingsPage(),
+                        ];
+                        return screen[currentIndex];
+                      },
+                    ),
                   ),
                 ),
-              ),
+        ),
       ),
       // NAV BAR
       bottomNavigationBar: Consumer<NavigationProvider>(

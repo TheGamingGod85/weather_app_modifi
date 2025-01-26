@@ -10,23 +10,33 @@ class DateDayWidget extends StatelessWidget {
     var formatter = DateFormat('MMM d');
     String formattedDate = formatter.format(now);
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Column(
       children: [
-        // date
-        Text(
-          formattedDate,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // date
+            Text(
+              formattedDate,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            // year
+            Text(
+              ',  ${now.year}',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+          ],
         ),
-        // year
-        Text(
-          ',  ${now.year}',
-          style: TextStyle(
-            fontSize: 20,
-          ),
+        Divider(
+          color: Colors.blueGrey,
+          thickness: 1,
+          indent: 10,
+          endIndent: 10,
         ),
       ],
     );

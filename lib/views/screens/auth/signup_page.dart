@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/provider/auth_provider.dart';
 import 'package:weather_app/utils/colors/app_colors.dart';
+import 'package:weather_app/views/screens/auth/login_page.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -36,11 +37,11 @@ class _SignupPageState extends State<SignupPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Create a new \nAccount',
+                'Create a new Account',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30,
-                  color: Colors.green,
+                  color: Colors.greenAccent,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -53,6 +54,7 @@ class _SignupPageState extends State<SignupPage> {
                 'Please fill in the form below to create a new account.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  color: Colors.white60,
                   fontSize: 16,
                 ),
               ),
@@ -163,7 +165,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
               // space
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
 
               authProvider.isLoading
@@ -217,6 +219,34 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ),
                     ),
+              SizedBox(
+                height: 20,
+              ),
+
+              Text(
+                'Already have an account?',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white70,
+                ),
+              ),
+
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginPage(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Login Here',
+                  style: TextStyle(
+                    color: AppColors.darkGreenColor,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

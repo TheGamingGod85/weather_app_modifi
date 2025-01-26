@@ -37,12 +37,14 @@ class WeatherDetailsWidget extends StatelessWidget {
 
                     // wind speed
                     Text(
-                      ' ${weatherProvider.weatherModel?.windSpeed} km/h',
+                      ' ${weatherProvider.weatherModel?.windSpeed} ',
                       style: TextStyle(
                         fontSize: 18,
+                        fontWeight: FontWeight.bold,
                         color: Colors.grey[300],
                       ),
                     ),
+                    Text('km/h'),
                   ],
                 ),
 
@@ -57,12 +59,14 @@ class WeatherDetailsWidget extends StatelessWidget {
 
               // humidity
               Text(
-                ' ${weatherProvider.weatherModel?.humidity}%',
+                ' ${weatherProvider.weatherModel?.humidity} ',
                 style: TextStyle(
                   fontSize: 18,
+                  fontWeight: FontWeight.bold,
                   color: Colors.grey[300],
                 ),
               ),
+              Text('%'),
             ],
           ),
 
@@ -77,12 +81,14 @@ class WeatherDetailsWidget extends StatelessWidget {
 
               // Pressure
               Text(
-                ' ${weatherProvider.weatherModel?.pressure} bar',
+                ' ${weatherProvider.weatherModel?.pressure} ',
                 style: TextStyle(
                   fontSize: 18,
+                  fontWeight: FontWeight.bold,
                   color: Colors.grey[300],
                 ),
               ),
+              Text('hPa'),
             ],
           ),
         ],

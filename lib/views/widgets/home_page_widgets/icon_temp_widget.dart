@@ -15,8 +15,9 @@ class IconTempWidget extends StatelessWidget {
         // icon
         Image.network(
           'https://openweathermap.org/img/wn/${weatherProvider.weatherModel?.weatherIcon}@2x.png',
-          width: 100,
-          height: 100,
+          width: 120,
+          height: 120,
+          scale: 0.3,
           errorBuilder: (context, error, stackTrace) {
             return Icon(
               Icons.error,
