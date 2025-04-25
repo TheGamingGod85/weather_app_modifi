@@ -1,37 +1,45 @@
 {
   "project_info": {
-    "project_number": "934302133797",
-    "firebase_url": "https://java-c9a00.firebaseio.com",
-    "project_id": "java-c9a00",
-    "storage_bucket": "java-c9a00.firebasestorage.app"
+    "project_number": "1047876844049",
+    "project_id": "dvsd-db0d5",
+    "storage_bucket": "dvsd-db0d5.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:934302133797:android:3055f7f739e8466bb359cc",
+        "mobilesdk_app_id": "1:1047876844049:android:3ecd133a6fa68daaf50fb0",
         "android_client_info": {
-          "package_name": "com.example.weather_app"
+          "package_name": "com.example.firebase_authy"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "934302133797-l7n75lvb6v9ol60555jfb0cfmmm2v78v.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAiAGzKojLrLDULm0ZA3rHD_0BwWVyDNwQ"
+          "current_key": "AIzaSyB76qPbkBgXI35eK3zDx0Rc3uVCRbKaYiU"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "934302133797-l7n75lvb6v9ol60555jfb0cfmmm2v78v.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047876844049:android:3c4646bbc466e88df50fb0",
+        "android_client_info": {
+          "package_name": "com.example.weather_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB76qPbkBgXI35eK3zDx0Rc3uVCRbKaYiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
         }
       }
     }

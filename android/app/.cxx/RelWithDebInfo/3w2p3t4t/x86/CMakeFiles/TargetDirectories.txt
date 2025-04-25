@@ -1,0 +1,2 @@
+D:/Otter/IDK/weather_madhur/android/app/.cxx/RelWithDebInfo/3w2p3t4t/x86/CMakeFiles/edit_cache.dir
+D:/Otter/IDK/weather_madhur/android/app/.cxx/RelWithDebInfo/3w2p3t4t/x86/CMakeFiles/rebuild_cache.dir

@@ -41,53 +41,48 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAXveLre2NWPvXgklzkn7OQ34OxbyXVQNM',
-    appId: '1:934302133797:web:30ed404257b37d65b359cc',
-    messagingSenderId: '934302133797',
-    projectId: 'java-c9a00',
-    authDomain: 'java-c9a00.firebaseapp.com',
-    databaseURL: 'https://java-c9a00.firebaseio.com',
-    storageBucket: 'java-c9a00.firebasestorage.app',
+    apiKey: 'AIzaSyBNhp-HzMJGl5ZG6GOq6e2BtC395Sviokg',
+    appId: '1:1047876844049:web:6eb1fd5e52a4c53df50fb0',
+    messagingSenderId: '1047876844049',
+    projectId: 'dvsd-db0d5',
+    authDomain: 'dvsd-db0d5.firebaseapp.com',
+    storageBucket: 'dvsd-db0d5.firebasestorage.app',
+    measurementId: 'G-HE9RRYCVHB',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAiAGzKojLrLDULm0ZA3rHD_0BwWVyDNwQ',
-    appId: '1:934302133797:android:3055f7f739e8466bb359cc',
-    messagingSenderId: '934302133797',
-    projectId: 'java-c9a00',
-    databaseURL: 'https://java-c9a00.firebaseio.com',
-    storageBucket: 'java-c9a00.firebasestorage.app',
+    apiKey: 'AIzaSyB76qPbkBgXI35eK3zDx0Rc3uVCRbKaYiU',
+    appId: '1:1047876844049:android:3c4646bbc466e88df50fb0',
+    messagingSenderId: '1047876844049',
+    projectId: 'dvsd-db0d5',
+    storageBucket: 'dvsd-db0d5.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB7KgVmJOMKwIYzlU6MSy7UjyddrjvCeXk',
-    appId: '1:934302133797:ios:f97e02d156674d49b359cc',
-    messagingSenderId: '934302133797',
-    projectId: 'java-c9a00',
-    databaseURL: 'https://java-c9a00.firebaseio.com',
-    storageBucket: 'java-c9a00.firebasestorage.app',
-    androidClientId: '934302133797-gko4sqrm54s2fn06qjqrb1bo9rj1le6n.apps.googleusercontent.com',
-    iosBundleId: 'com.example.weatherApp',
+    apiKey: 'AIzaSyC7uelBft2Kz7PuxJ02pkASMUNZZSYTBvo',
+    appId: '1:1047876844049:ios:1390e50e9c4f526df50fb0',
+    messagingSenderId: '1047876844049',
+    projectId: 'dvsd-db0d5',
+    storageBucket: 'dvsd-db0d5.firebasestorage.app',
+    iosBundleId: 'com.example.firebaseAuthy',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB7KgVmJOMKwIYzlU6MSy7UjyddrjvCeXk',
-    appId: '1:934302133797:ios:f97e02d156674d49b359cc',
-    messagingSenderId: '934302133797',
-    projectId: 'java-c9a00',
-    databaseURL: 'https://java-c9a00.firebaseio.com',
-    storageBucket: 'java-c9a00.firebasestorage.app',
-    androidClientId: '934302133797-gko4sqrm54s2fn06qjqrb1bo9rj1le6n.apps.googleusercontent.com',
-    iosBundleId: 'com.example.weatherApp',
+    apiKey: 'AIzaSyC7uelBft2Kz7PuxJ02pkASMUNZZSYTBvo',
+    appId: '1:1047876844049:ios:1390e50e9c4f526df50fb0',
+    messagingSenderId: '1047876844049',
+    projectId: 'dvsd-db0d5',
+    storageBucket: 'dvsd-db0d5.firebasestorage.app',
+    iosBundleId: 'com.example.firebaseAuthy',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAXveLre2NWPvXgklzkn7OQ34OxbyXVQNM',
-    appId: '1:934302133797:web:c52c6c94217fe515b359cc',
-    messagingSenderId: '934302133797',
-    projectId: 'java-c9a00',
-    authDomain: 'java-c9a00.firebaseapp.com',
-    databaseURL: 'https://java-c9a00.firebaseio.com',
-    storageBucket: 'java-c9a00.firebasestorage.app',
+    apiKey: 'AIzaSyBNhp-HzMJGl5ZG6GOq6e2BtC395Sviokg',
+    appId: '1:1047876844049:web:f9a45d981dac5261f50fb0',
+    messagingSenderId: '1047876844049',
+    projectId: 'dvsd-db0d5',
+    authDomain: 'dvsd-db0d5.firebaseapp.com',
+    storageBucket: 'dvsd-db0d5.firebasestorage.app',
+    measurementId: 'G-QFVJ258VPQ',
   );
 }
